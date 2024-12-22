@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good Night 🕙</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #db4bbb, #9e51ab, #9432a5, #88108f);
+        background-size: 400% 400%;
+        animation: backgroundBlink 6s infinite;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        flex-direction: column;
+      }
+
+      @keyframes backgroundBlink {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      h1 {
+        color: rgb(240, 9, 59);
+        font-size: 3em;
+        text-shadow: 0 0 10px rgba(194, 152, 152, 0.8);
+        animation: fadeIn 3s ease-in-out infinite alternate,
+          blink 4s step-start infinite;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .music-control {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 1s ease;
+      }
+
+      .music-control:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ngủ ngon mơ đẹp nhé :3 ✨</h1>
+    <div class="music-control" onclick="toggleMusic()">🎵 Bật/Tắt Nhạc</div>
+    <audio id="bgMusic" loop>
+      <source
+        src="y2mate.com - DAISHI DANCE Cecile Corbel  Take Me Hand Lyrics.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+
+    <script>
+      const music = document.getElementById("bgMusic");
+      let isPlaying = false;
+
+      // Hàm bật/tắt nhạc
+      function toggleMusic() {
+        if (isPlaying) {
+          music.pause();
+          isPlaying = false;
+        } else {
+          music.play();
+          isPlaying = true;
+        }
+      }
+
+      // Xử lý lỗi nếu không phát được nhạc
+      music.onerror = () => {
+        alert(
+          "Không thể phát nhạc. Vui lòng kiểm tra đường dẫn hoặc file nhạc."
+        );
+      };
+    </script>
+  </body>
+</html>
